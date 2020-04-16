@@ -17,7 +17,7 @@ pipeline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
                     keepAll: true,
-                    reportDir: 'target/demo/cucumber-html-reports/',
+                    reportDir: 'target/',
                     reportFiles: 'overview-features.html',
                     reportName: 'Cucumber SelfTest Report'
                 ]
