@@ -5,10 +5,6 @@ pipeline {
             steps {
                 script {
                     app = docker.build("test")
-                     
-                   
-                    
-                    )
                 }
                 
                 // publish html
