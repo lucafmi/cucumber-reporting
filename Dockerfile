@@ -9,6 +9,6 @@ COPY pom.xml /usr/src/app
 RUN mvn -f /usr/src/app/pom.xml clean test
 RUN apk add --no-cache zip zlib-dev
 RUN zip report.zip -r target/demo/cucumber-html-reports/
-RUN curl -u USERNAME:PASSWORD -X PUT "http://${afhost}:8082/artifactory/generic-local/report.zip" -T report.zip
+RUN curl -u $USERNAME:$PASSWORD -X PUT "http://${afhost}:8082/artifactory/generic-local/report.zip" -T report.zip
 
 
