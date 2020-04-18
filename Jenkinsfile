@@ -49,11 +49,13 @@ pipeline {
         }
         stage ("Publish"){
             steps {
-                def server = Artifactory.server("artifactory")
-                def rtMaven = Artifactory.newMavenBuild()
-                rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
-                def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
-                server.publishBuildInfo buildInfo
+                script {
+                    def server = Artifactory.server("artifactory")
+                    def rtMaven = Artifactory.newMavenBuild()
+                    rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
+                    def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+                    server.publishBuildInfo buildInfo
+                }
             }
         }
     }
